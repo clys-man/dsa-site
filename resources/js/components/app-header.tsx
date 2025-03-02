@@ -21,6 +21,11 @@ const mainNavItems: NavItem[] = [
         url: '/dashboard',
         icon: LayoutGrid,
     },
+    {
+        title: 'Concepts',
+        url: '/concepts',
+        icon: LayoutGrid,
+    },
 ];
 
 const rightNavItems: NavItem[] = [
