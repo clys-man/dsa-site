@@ -12,7 +12,7 @@ class Concept extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 'slug', 'description', 'progress', 'steps', 'time', 'completed'
+        'title', 'slug', 'description', 'progress', 'time', 'completed'
     ];
 
     protected static function boot()

@@ -22,7 +22,6 @@ class ConceptFactory extends Factory
             'title' => $title,
             'slug' => Str::slug($title),
             'description' => $this->faker->paragraph(),
-            'steps' => $this->faker->numberBetween(1, 10),
             'time' => $this->faker->numberBetween(5, 60)
         ];
     }
