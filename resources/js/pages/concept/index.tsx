@@ -5,7 +5,7 @@ import AppLayout from "@/layouts/app-layout";
 import { Concept, LengthAwarePaginator, type BreadcrumbItem } from "@/types";
 import { Head, Link, usePage } from "@inertiajs/react";
 import { Icon } from "@/components/ui/icon";
-import { Clock, Ghost } from "lucide-react";
+import { Clock } from "lucide-react";
 import { Paginator } from "@/components/paginator";
 import { cn } from "@/lib/utils";
 import EmptyState from "@/components/empty-state";
