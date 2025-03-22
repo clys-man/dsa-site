@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -8,7 +10,7 @@ use Illuminate\Support\Str;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Concept>
  */
-class ConceptFactory extends Factory
+final class ConceptFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,11 +20,12 @@ class ConceptFactory extends Factory
     public function definition(): array
     {
         $title = $this->faker->sentence(3);
+
         return [
             'title' => $title,
             'slug' => Str::slug($title),
             'description' => $this->faker->paragraph(),
-            'time' => $this->faker->numberBetween(5, 60)
+            'time' => $this->faker->numberBetween(5, 60),
         ];
     }
 }

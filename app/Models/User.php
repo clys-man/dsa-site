@@ -22,10 +22,10 @@ use Spatie\Permission\Traits\HasRoles;
  * @property null|CarbonInterface $created_at
  * @property null|CarbonInterface $updated_at
  */
-final class User extends Authenticatable implements MustVerifyEmail, FilamentUser
+final class User extends Authenticatable implements FilamentUser, MustVerifyEmail
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable, HasRoles;
+    use HasFactory, HasRoles, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -48,6 +48,16 @@ final class User extends Authenticatable implements MustVerifyEmail, FilamentUse
         'remember_token',
     ];
 
+    public function isAdmin(): bool
+    {
+        return $this->hasRole('admin');
+    }
+
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return $panel->getId() === 'admin' && $this->isAdmin();
+    }
+
     /**
      * Get the attributes that should be cast.
      *
@@ -59,18 +69,5 @@ final class User extends Authenticatable implements MustVerifyEmail, FilamentUse
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
-    }
-
-    /**
-     * @return bool
-     */
-    public function isAdmin(): bool
-    {
-        return $this->hasRole('admin');
-    }
-
-    public function canAccessPanel(Panel $panel): bool
-    {
-        return $panel->getId() === 'admin' && $this->isAdmin();
     }
 }

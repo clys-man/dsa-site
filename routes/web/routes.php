@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use App\Http\Controllers\Web\Concept\ConceptController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 

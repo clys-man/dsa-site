@@ -1,27 +1,28 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-class Concept extends Model
+final class Concept extends Model
 {
     /** @use HasFactory<\Database\Factories\ConceptFactory> */
     use HasFactory;
 
     protected $fillable = [
-        'title', 'slug', 'description', 'progress', 'time', 'completed'
+        'title', 'slug', 'description', 'progress', 'time', 'completed',
     ];
 
-    protected static function boot()
+    protected static function boot(): void
     {
         parent::boot();
 
-        static::creating(function ($concept) {
+        self::creating(function ($concept): void {
             $concept->slug = Str::slug($concept->title);
         });
     }
 }
-
